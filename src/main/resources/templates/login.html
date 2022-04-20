@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+    <head>
+        <title>Expense Tracker</title>
+        <link rel="stylesheet"
+              href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+              integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+              crossorigin="anonymous">
+    </head>
+    <body>
+
+    <!-- create navigation bar ( header) -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed"
+                        data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+                        aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span> <span
+                        class="icon-bar"></span> <span class="icon-bar"></span> <span
+                        class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#" th:href="@{/}">Expense Tracker</a>
+            </div>
+        </div>
+    </nav>
+
+    <br>
+    <br>
+
+    <!-- FORM -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+
+                <h1>Login</h1>
+
+                <form th:action="@{/login}" method="post">
+
+                    <!-- ERROR MESSAGE -->
+                    <div th:if="${param.error}">
+                        <div class="alert alert-info">
+                            Invalid username or password.
+                        </div>
+                    </div>
+
+                    <!-- LOGOUT MESSAGE -->
+                    <div th:if="${param.logout}">
+                        <div class="alert alert-info">
+                            Logged out.
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label" for="username">Username </label> :
+                        <input id="username" name = "username" class="form-control" placeholder="Enter email" required autofocus="autofocus"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label" for="password">Password</label>
+                        <input id="password" name="password" class="form-control" type="password" placeholder="password" required autofocus="autofocus"/>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-6 col-sm-offset-3">
+                                <input type="submit" name="login-submit" id="login-submit"
+                                       class="form-control btn btn-primary" value="Log In" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <span>Dont have an account? <a href="/" th:href="@{/registration}">Registration</a></span>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    </body>
+</html>
